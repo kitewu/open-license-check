@@ -1,0 +1,29 @@
+{
+  "name": "open-license-check",
+  "version": "0.0.1",
+  "description": "Open source license check based on apache-rat",
+  "main": "./lib/index.js",
+  "bin": {
+    "open-license-check": "./lib/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "deglob": "^4.0.1",
+    "gulp-util": "^3.0.8",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.29",
+    "tslint": "^5.0.0",
+    "tslib": "^1.11.1",
+    "typescript": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Xlab",
+  "license": "MIT"
+}
