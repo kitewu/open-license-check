@@ -1,6 +1,6 @@
 {
   "name": "open-license-check",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Open source license check based on apache-rat",
   "main": "./lib/index.js",
   "bin": {
