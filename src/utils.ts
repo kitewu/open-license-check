@@ -1,5 +1,5 @@
 import { ModuleName, WorkDir } from './index';
-import { renameSync, existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync, createReadStream, createWriteStream } from 'fs';
 // import { join } from 'path';
 import *  as path from 'path';
 // tslint:disable-next-line: no-var-requires
@@ -14,12 +14,16 @@ export function processFiles(files: string[]) {
   // move files to be checked to separate directories
   const len = process.cwd().length;
   for (let i in files) {
-    const newPath = path.join(WorkDir, files[i].substr(len + 1));
+    const target = path.join(WorkDir, files[i].substr(len + 1));
 
     // check if parent path exist
-    const parentPath = path.dirname(newPath);
+    const parentPath = path.dirname(target);
     if (!existsSync(parentPath)) mkdirSync(parentPath);
 
-    renameSync(files[i], newPath);
+    copy(files[i], target);
   }
+}
+
+function copy(src: string, target: string) {
+  createReadStream(src).pipe(createWriteStream(target));
 }

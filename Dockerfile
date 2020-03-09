@@ -11,10 +11,14 @@ ENV NODE_HOME=/usr/local/node-v12.16.1-linux-x64
 ENV PATH=$NODE_HOME/bin:$PATH
 
 # install open-license-check
-RUN npm i -g open-license-check
+RUN npm i -g open-license-check && npm i -g tslib
 
-RUN mkdir /github/workspace
-ENV WORK_DIR /github/workspace
-RUN mkdir /workdir
+# project path
+RUN mkdir /check
+ENV WORK_DIR /check
+ENV RAT_DIR /rat-0.13.jar
+
+RUN mkdir -p /github/workspace
+WORKDIR /github/workspace
 
 CMD ["open-license-check"]

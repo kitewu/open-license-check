@@ -9,7 +9,7 @@ const deglob = require('deglob');
 const gutil = require('gulp-util');
 
 function doCheck() {
-  const command = `java -jar /rat-0.13.jar -x -d ${WorkDir}`;
+  const command = `java -jar ${RatDir} -x -d ${WorkDir}`;
   exec(command, (err, stdout, stderr) => {
     if (err) {
       gutil.log(ModuleName, gutil.colors.red(err));
@@ -68,6 +68,9 @@ function doCheck() {
 export const ModuleName = 'open-license-check';
 export let WorkDir = '../test';
 if (process.env.WORK_DIR) WorkDir = process.env.WORK_DIR;
+
+let RatDir = './rat-0.13.jar';
+if (process.env.RAT_DIR) RatDir = process.env.RAT_DIR;
 
 const config = loadConfig();
 deglob(config.patterns, config.options, (err: any, files: string[]) => {
