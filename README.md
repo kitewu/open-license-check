@@ -1,6 +1,6 @@
 # open-license-check
 
-`open-license-check` is an open source module for markdown file format checking.
+`open-license-check` is an open source module for license checking.
 
 ## Getting start
 
@@ -38,7 +38,7 @@ interface Config {
 
 ```javascript
 {
-  patterns: [ '**/*.md' ],
+  patterns: [ '**/*' ],
   options: {
     useGitIgnore: true,
     ignore: [ 'node_modules/**/*' ],
@@ -53,8 +53,7 @@ Note: In order to facilitate the user to integrate the configuration into the pa
 ```json
 {
   "open-license-check": {
-    "requires": "./requires.js",
-    "patterns": [ "**/*.md" ],
+    "patterns": [ "**/*" ],
     "options": {
       "useGitIgnore": true,
       "ignore": [ "node_modules/**/*" ]
