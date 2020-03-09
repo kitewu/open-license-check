@@ -18,7 +18,7 @@ export function processFiles(files: string[]) {
 
     // check if parent path exist
     const parentPath = path.dirname(target);
-    if (!existsSync(parentPath)) mkdirSync(parentPath);
+    if (!existsSync(parentPath)) mkdirSync(parentPath, { recursive: true });
 
     copy(files[i], target);
   }

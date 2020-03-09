@@ -17,7 +17,7 @@ export interface Config {
 
 export function loadConfig(): Config {
   const defaultConfig: Config = {
-    patterns: ['**/*'],
+    patterns: ['**/*.ts'],
     options: {
       useGitIgnore: true,
       ignore: ['node_modules/**/*'],

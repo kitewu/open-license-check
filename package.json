@@ -10,6 +10,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "commander": "^4.1.1",
     "deglob": "^4.0.1",
     "gulp-util": "^3.0.8",
     "xml-js": "^1.6.11"

@@ -10,15 +10,19 @@ RUN wget https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz && \
 ENV NODE_HOME=/usr/local/node-v12.16.1-linux-x64
 ENV PATH=$NODE_HOME/bin:$PATH
 
-# install open-license-check
-RUN npm i -g open-license-check && npm i -g tslib
+# copy project
+RUN mkdir /open-license-check
+ADD ./ /open-license-check
+RUN cd /open-license-check && npm i && npm i -g tslib && npm run build
 
-# project path
-RUN mkdir /check
-ENV WORK_DIR /check
-ENV RAT_DIR /rat-0.13.jar
-
+# user project mount path
 RUN mkdir -p /github/workspace
 WORKDIR /github/workspace
 
-CMD ["open-license-check"]
+# actual check path
+RUN mkdir /check
+ENV WORK_DIR /check
+ENV RAT_DIR /open-license-check/rat-0.13.jar
+
+RUN chmod +x /open-license-check/entrypoint.sh
+ENTRYPOINT ["/open-license-check/entrypoint.sh"]
