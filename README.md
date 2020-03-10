@@ -69,6 +69,14 @@ The configuration file can be placed in any path of the project and specified by
 # open-license-check
 ```
 
+#### Parameters
+
+Users can pass parameters to decide which log information to output. The parameters are as follows:
+
+- -p, --passed [false | true], false means do not output files that passed the check, true means normal output, default is true
+- -s,-skipped [false | true], false means do not output files that skipped the checking, true means normal output, default is true
+- -f, --failed [false | true], false means do not output files that failed the check, true means normal output, default is true
+
 ### docker
 
 #### build
@@ -80,5 +88,5 @@ The configuration file can be placed in any path of the project and specified by
 #### run
 
 ```bash
-# docker run -it -v src/path:/github/workspace open-license-check
+# docker run -it -v src/path:/github/workspace open-license-check -p false
 ```
